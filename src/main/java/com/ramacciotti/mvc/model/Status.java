@@ -1,6 +1,6 @@
 package com.ramacciotti.mvc.model;
 
-public enum TeacherStatus {
+public enum Status {
 
     ACTIVE, INACTIVE;
 

@@ -7,7 +7,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,7 @@ import lombok.With;
 
 import java.math.BigDecimal;
 
+@With
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,12 +31,6 @@ public class Teacher {
     private BigDecimal salary;
 
     @Enumerated(EnumType.STRING) // saves status as String
-    private TeacherStatus status;
-
-    public Teacher(String name, BigDecimal salary, TeacherStatus status) {
-        this.name = name;
-        this.salary = salary;
-        this.status = status;
-    }
+    private Status status;
 
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html>
+    <head>
+        <title>Post Teacher</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container bcontent">
+
+            <h2>Create New Teacher</h2>
+
+            <form action="/teacher/form/submit" method="POST">
+
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input class="form-control" type="text" name="name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Salary</label>
+                    <input class="form-control"  type="text" name="salary">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" name="status">
+                        <option
+                                th:each="item : ${status}"
+                                    th:value="${item}" th:text="${item}">
+                        </option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <a href="javascript:history.back()">Go Back to Latest Page</a>
+
+            </form>
+
+        </div>
+
+    </body>
+</html>
