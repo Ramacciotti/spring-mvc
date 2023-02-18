@@ -24,25 +24,6 @@ public class TeacherController {
     @Autowired
     TeacherService teacherService;
 
-    @GetMapping("/form/show")
-    public ModelAndView showForm() {
-        log.info(">> showForm()");
-        ModelAndView modelAndView = new ModelAndView("form.html");
-        modelAndView.addObject("status", Status.values());
-        return modelAndView;
-    }
-
-
-    /**
-     * '@Valid' asks if the request is valid
-     */
-    @PostMapping("/form/submit")
-    public String submitForm(@Valid TeacherRequestDTO teacherRequestDTO) {
-        log.info(">> submitForm()");
-        teacherService.create(teacherRequestDTO);
-        return "redirect:/teacher/list";
-    }
-
     @GetMapping("/list")
     public ModelAndView read() {
         log.info(">> list()");
@@ -51,5 +32,22 @@ public class TeacherController {
         modelAndView.addObject("teachers", teachers);
         return modelAndView;
     }
+
+    @GetMapping("/form/show")
+    public ModelAndView showForm() {
+        log.info(">> showForm()");
+        ModelAndView modelAndView = new ModelAndView("form.html");
+        modelAndView.addObject("TeacherRequestDTO", new TeacherRequestDTO());
+        modelAndView.addObject("status", Status.values());
+        return modelAndView;
+    }
+
+    @PostMapping("/form/submit")
+    public ModelAndView submitForm(@Valid TeacherRequestDTO teacherRequestDTO) {
+        log.info(">> submitForm()");
+        teacherService.create(teacherRequestDTO);
+        return new ModelAndView("redirect:/teacher/list");
+    }
+
 
 }

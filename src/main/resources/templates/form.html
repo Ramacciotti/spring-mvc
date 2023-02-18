@@ -14,19 +14,19 @@
 
             <h2>Create New Teacher</h2>
 
-            <form action="/teacher/form/submit" method="POST">
+            <form th:object=${TeacherRequestDTO} action="/teacher/form/submit" method="POST">
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input class="form-control" type="text" name="name">
+                    <input class="form-control" type="text" th:field="*{name}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Salary</label>
-                    <input class="form-control"  type="text" name="salary">
+                    <input class="form-control"  type="text" th:field="*{salary}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Status</label>
-                    <select class="form-select" name="status">
+                    <select class="form-select" th:field="*{status}">
                         <option
                                 th:each="item : ${status}"
                                     th:value="${item}" th:text="${item}">
