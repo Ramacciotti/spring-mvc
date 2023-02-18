@@ -4,9 +4,11 @@ import com.ramacciotti.mvc.dto.TeacherRequestDTO;
 import com.ramacciotti.mvc.model.Status;
 import com.ramacciotti.mvc.model.Teacher;
 import com.ramacciotti.mvc.service.TeacherService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +32,12 @@ public class TeacherController {
         return modelAndView;
     }
 
+
+    /**
+     * '@Valid' asks if the request is valid
+     */
     @PostMapping("/form/submit")
-    public String submitForm(TeacherRequestDTO teacherRequestDTO) {
+    public String submitForm(@Valid TeacherRequestDTO teacherRequestDTO) {
         log.info(">> submitForm()");
         teacherService.create(teacherRequestDTO);
         return "redirect:/teacher/list";

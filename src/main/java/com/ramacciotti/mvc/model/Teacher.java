@@ -28,6 +28,7 @@ public class Teacher {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private BigDecimal salary;
 
     @Enumerated(EnumType.STRING) // saves status as String
