@@ -28,7 +28,7 @@ public class TeacherController {
     public ModelAndView read() {
         log.info(">> list()");
         List<Teacher> teachers = teacherService.read();
-        ModelAndView modelAndView = new ModelAndView("read_list.html");
+        ModelAndView modelAndView = new ModelAndView("list.html");
         modelAndView.addObject("teachers", teachers);
         return modelAndView;
     }
@@ -37,8 +37,8 @@ public class TeacherController {
     public ModelAndView showForm() {
         log.info(">> showForm()");
         ModelAndView modelAndView = new ModelAndView("form.html");
-        modelAndView.addObject("TeacherRequestDTO", new TeacherRequestDTO());
-        modelAndView.addObject("status", Status.values());
+        modelAndView.addObject("teacherRequestDTO", new TeacherRequestDTO()); // bindindg Object to form
+        modelAndView.addObject("statusValues", Status.values());
         return modelAndView;
     }
 
